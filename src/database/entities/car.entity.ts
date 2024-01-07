@@ -1,30 +1,34 @@
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {CarImage} from "./images.entity";
 import {CarColorVariation} from "./colors.entity";
-import {Field, ObjectType} from "@nestjs/graphql";
+import {Field, Int, ObjectType} from "@nestjs/graphql";
 
 @Entity()
 @ObjectType()
 export class Car {
 
-    @Field()
+    @Field(() => Int)
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    @Field()
+    @Field(() => Int)
     HP: number;
 
     @Column()
-    @Field()
+    @Field(() => Int)
+    rating: number;
+
+    @Field(() => String)
+    @Column()
     model: string;
 
     @Column()
-    @Field()
+    @Field(() => Int)
     price: number;
 
     @Column()
-    @Field()
+    @Field(() => String)
     releaseDate: string;
 
     @Field(() => [CarImage])
