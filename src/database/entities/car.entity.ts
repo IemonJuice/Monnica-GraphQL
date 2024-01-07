@@ -33,10 +33,10 @@ export class Car {
 
     @Field(() => [CarImage])
     @OneToMany(() => CarImage,(carImage) => carImage.carId)
-    imagesUrl: CarImage[];
+    imagesUrl: Promise<CarImage[]>;
 
     @Field(() => [CarColorVariation])
     @OneToMany(() => CarColorVariation, (carColorVariation) => carColorVariation.carId)
-    colors: CarColorVariation[];
+    colors: Promise<CarColorVariation[]>;
 
 }

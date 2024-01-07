@@ -16,5 +16,5 @@ export class CarImage {
 
     @Field(() => Car)
     @ManyToOne(() => Car, (car) => car.imagesUrl)
-    carId: Car;
+    carId: Promise<Car>;
 }

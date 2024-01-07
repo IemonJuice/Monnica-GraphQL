@@ -1,51 +1,73 @@
-# Monnica Cars Backend
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
-Welcome to the Monnica Cars Backend, where the power of NestJS, GraphQL, MySQL, Node.js, and Express converge to support the frontend masterpiece. This backend project serves as the robust foundation for handling data, business logic, and seamless communication with the Monnica Cars frontend.
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-## Features
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-- **NestJS Prowess**: Leverage the capabilities of NestJS to build a scalable and maintainable backend architecture.
-- **GraphQL Flexibility**: Embrace the flexibility and efficiency of GraphQL for efficient data fetching and manipulation.
-- **MySQL Database**: Store and retrieve data with MySQL, ensuring a reliable and structured data storage solution.
-- **Express Integration**: Seamlessly integrate with Express, a fast and minimalist web framework for Node.js.
-- **RESTful Endpoints**: Provide RESTful endpoints for additional flexibility and compatibility.
+## Description
 
-## Getting Started
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-Embark on your journey into the Monnica Cars backend by following these straightforward steps:
+## Installation
 
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/monnica-cars-backend.git
-    ```
+```bash
+$ npm install
+```
 
-2. **Install dependencies:**
-    ```bash
-    npm install
-    ```
+## Running the app
 
-3. **Set up the MySQL database:**
-    - Create a MySQL database and update the configuration in `src/config/orm.config.ts`.
+```bash
+# development
+$ npm run start
 
-4. **Run the application:**
-    ```bash
-    npm run start
-    ```
+# watch mode
+$ npm run start:dev
 
-Explore the backend, implement your business logic, and seamlessly integrate with the Monnica Cars frontend!
+# production mode
+$ npm run start:prod
+```
 
-## Contributing
+## Test
 
-Contributions to enhance and expand the Monnica Cars Backend are highly encouraged. Please review our [contribution guidelines](CONTRIBUTING.md) before getting started.
+```bash
+# unit tests
+$ npm run test
 
-## Showcase
+# e2e tests
+$ npm run test:e2e
 
-*Include details about the backend structure, key GraphQL queries/mutations, or any relevant screenshots demonstrating the backend in action.*
+# test coverage
+$ npm run test:cov
+```
 
 ## Support
 
-For any inquiries, issues, or feedback, please feel free to open a discussion on [GitHub Issues](https://github.com/your-username/monnica-cars-backend/issues).
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+## Stay in touch
+
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
-This backend project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Nest is [MIT licensed](LICENSE).

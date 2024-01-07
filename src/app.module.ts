@@ -7,14 +7,12 @@ import ormConfigProd from './config/orm.config.prod';
 import {ApolloDriver, ApolloDriverConfig} from "@nestjs/apollo";
 import {GraphQLModule} from "@nestjs/graphql";
 import {CarsResolver} from "./graphql/resolvers/cars.resolver";
-import {Car} from "./database/entities/car.entity";
+import { PaginationModule } from './features/pagination/pagination.module';
 
 
 @Module({
     providers:[CarsResolver],
     imports: [
-
-        TypeOrmModule.forFeature([Car]),
 
         ConfigModule.forRoot({
             isGlobal: true,
@@ -31,6 +29,8 @@ import {Car} from "./database/entities/car.entity";
             autoSchemaFile: true,
             playground: true,
         }),
+
+        PaginationModule,
     ]
 })
 export class AppModule {

@@ -13,5 +13,5 @@ export class CarColorVariation {
     color: string;
     @Field(() => Car)
     @ManyToOne(() => Car, (car) => car.colors)
-    carId: Car;
+    carId: Promise<Car>;
 }
