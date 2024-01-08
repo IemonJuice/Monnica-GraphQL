@@ -9,11 +9,14 @@ import {GraphQLModule} from "@nestjs/graphql";
 import {CarsResolver} from "./graphql/resolvers/cars.resolver";
 import { PaginationModule } from './features/pagination/pagination.module';
 import { CarsModule } from './features/cars/cars.module';
+import { UsersModule } from './features/users/users.module';
 import { AuthModule } from './features/auth/auth.module';
+import {UsersResolver} from "./graphql/resolvers/users.resolver";
+
 
 
 @Module({
-    providers:[CarsResolver],
+    providers:[CarsResolver,UsersResolver],
     imports: [
 
         ConfigModule.forRoot({
@@ -36,7 +39,10 @@ import { AuthModule } from './features/auth/auth.module';
 
         CarsModule,
 
+        UsersModule,
+
         AuthModule,
+
     ]
 })
 export class AppModule {
