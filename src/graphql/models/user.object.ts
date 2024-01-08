@@ -6,7 +6,7 @@ import {CarObject} from "./car.object";
 @ObjectType()
 export class User{
 
-    @Field()
+    @Field({nullable:true})
     id:number;
 
     @Field()

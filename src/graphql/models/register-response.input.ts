@@ -1,10 +1,9 @@
-import {User} from "../../database/entities/user.entity";
-import {Field, InputType, ObjectType} from "@nestjs/graphql";
-import {Column, PrimaryGeneratedColumn} from "typeorm";
+
+import {Field, InputType} from "@nestjs/graphql";
 
 @InputType()
-export class RegisterInput{
-    @Field()
+export class RegisterResponseInput{
+    @Field({nullable:true})
     id:number;
 
 
