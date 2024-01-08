@@ -1,38 +1,54 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {CarImage} from "./images.entity";
 import {CarColorVariation} from "./colors.entity";
-import {Field, ObjectType} from "@nestjs/graphql";
+import {Field, Int, ObjectType} from "@nestjs/graphql";
+import {User} from "./user.entity";
 
 @Entity()
 @ObjectType()
 export class Car {
 
-    @Field()
+    @Field(() => Int)
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    @Field()
+    @Field(() => Int)
     HP: number;
 
     @Column()
-    @Field()
+    @Field(() => Int)
+    rating: number;
+
+    @Field(() => String)
+    @Column()
     model: string;
 
     @Column()
-    @Field()
+    @Field(() => Int)
     price: number;
 
     @Column()
-    @Field()
+    @Field(() => String)
     releaseDate: string;
 
     @Field(() => [CarImage])
     @OneToMany(() => CarImage,(carImage) => carImage.carId)
-    imagesUrl: CarImage[];
+    imagesUrl: Promise<CarImage[]>;
 
     @Field(() => [CarColorVariation])
     @OneToMany(() => CarColorVariation, (carColorVariation) => carColorVariation.carId)
-    colors: CarColorVariation[];
+    colors: Promise<CarColorVariation[]>;
+
+
+    @Field(() => [User])
+    @ManyToMany(() => User,(user) => user.basket)
+    @JoinTable()
+    usersCheckoutId:User[]
+
+    @Field(() => [User])
+    @ManyToMany(() => User,(user) => user.liked)
+    @JoinTable()
+    usersLikedId:User[]
 
 }

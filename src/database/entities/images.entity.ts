@@ -1,20 +1,20 @@
 import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {Car} from "./car.entity";
-import {Field, ObjectType} from "@nestjs/graphql";
+import {Field, Int, ObjectType} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity()
 export class CarImage {
 
-    @Field()
+    @Field(() => Int)
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Field()
+    @Field(() => String)
     @Column()
     imageUrl: string;
 
     @Field(() => Car)
     @ManyToOne(() => Car, (car) => car.imagesUrl)
-    carId: Car;
+    carId: Promise<Car>;
 }
