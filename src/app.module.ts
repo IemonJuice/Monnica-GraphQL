@@ -7,16 +7,16 @@ import ormConfigProd from './config/orm.config.prod';
 import {ApolloDriver, ApolloDriverConfig} from "@nestjs/apollo";
 import {GraphQLModule} from "@nestjs/graphql";
 import {CarsResolver} from "./graphql/resolvers/cars.resolver";
-import { PaginationModule } from './features/pagination/pagination.module';
-import { CarsModule } from './features/cars/cars.module';
-import { UsersModule } from './features/users/users.module';
-import { AuthModule } from './features/auth/auth.module';
+import {PaginationModule} from './features/pagination/pagination.module';
+import {CarsModule} from './features/cars/cars.module';
+import {UsersModule} from './features/users/users.module';
+import {AuthModule} from './features/auth/auth.module';
 import {UsersResolver} from "./graphql/resolvers/users.resolver";
 
 
 
 @Module({
-    providers:[CarsResolver,UsersResolver],
+    providers: [CarsResolver, UsersResolver],
     imports: [
 
         ConfigModule.forRoot({
@@ -35,6 +35,9 @@ import {UsersResolver} from "./graphql/resolvers/users.resolver";
             playground: true,
         }),
 
+
+
+
         PaginationModule,
 
         CarsModule,
@@ -42,7 +45,6 @@ import {UsersResolver} from "./graphql/resolvers/users.resolver";
         UsersModule,
 
         AuthModule,
-
     ]
 })
 export class AppModule {
