@@ -45,10 +45,6 @@ export class AuthService {
         user.password = await bcrypt.hash(user.password, 10);
         return {
             user: await this.usersService.addNewUserToDataBase(user),
-            token: this.jwtService.sign({
-                username: existedUser.username,
-                sub: existedUser.id
-            })
         };
     }
 

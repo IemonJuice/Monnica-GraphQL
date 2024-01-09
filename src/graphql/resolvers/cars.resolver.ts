@@ -17,19 +17,18 @@ export class CarsResolver {
     public async getCars(
         @Args('pageNumber', {type: () => Int}) pageNumber: number,
         @Args('priceSortingCriteria', {type: () => String,nullable:true}) priceSortingCriteria:string,
-        @Args('ratingFilterCriteria',{type: () => Int,nullable:true}) ratingFilterCriteria:number
+        @Args('ratingFilterCriteria',{type: () => Int,nullable:true}) ratingFilterCriteria:number,
+        @Args('generalCarInfo',{type: () => String,nullable:true}) generalCarInfo:string,
     ): Promise<Car[]> {
         return await this.paginationService.getPaginatedCars(
             pageNumber,
             priceSortingCriteria,
-            ratingFilterCriteria);
+            ratingFilterCriteria,
+            generalCarInfo
+        );
     }
     @Query(() => CarObject)
     public async getCar(@Args('carId', {type: () => Int}) carId: number): Promise<Car> {
         return await this.carsService.getCarById(carId)
-    }
-    @Query(() => [CarObject])
-    public async getCarWithSpecificField(@Args('searchingField', {type: () => String}) searchingField: string): Promise<Car[]> {
-        return await this.carsService.getCarWithSearchingField(searchingField)
     }
 }
