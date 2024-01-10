@@ -12,7 +12,7 @@ export class Car {
     releaseDate: string;
     imagesUrl: Promise<CarImage[]>;
     colors: Promise<CarColorVariation[]>;
-    usersCheckoutId: User[]
-    usersLikedId: User[]
+    users: User[]
+
 
 }

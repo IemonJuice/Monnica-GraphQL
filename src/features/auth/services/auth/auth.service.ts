@@ -4,6 +4,7 @@ import * as bcrypt from 'bcrypt'
 import {SignUpDto} from "../../../../core/models/signUp.dto";
 import {SignInDto} from "../../../../core/models/signIn.dto";
 import {JwtService} from "@nestjs/jwt";
+import {UserForChangeInfo} from "../../../../core/models/user.model";
 
 @Injectable()
 export class AuthService {
@@ -50,9 +51,13 @@ export class AuthService {
 
     async getProfile(token: string) {
         const decodedToken = await this.jwtService.decode(token);
-        if(!decodedToken){
+        if (!decodedToken) {
             throw new UnauthorizedException();
         }
         return await this.usersService.getUserById(decodedToken.sub)
+    }
+
+    async changeUserInfo(user: UserForChangeInfo) {
+        return await this.usersService.changeUserInfo(user)
     }
 }

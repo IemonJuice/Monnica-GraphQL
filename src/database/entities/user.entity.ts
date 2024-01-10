@@ -27,13 +27,7 @@ export class User{
 
     password:string;
 
-    @ManyToMany(() => Car, (car) => car.usersCheckoutId)
+    @ManyToMany(() => Car, car => car.users, { cascade: ['insert', 'update'] })
     @JoinTable()
-    basket:Car[];
-
-    @ManyToMany(() => Car, (car) => car.usersLikedId)
-    @JoinTable()
-    liked:Car[]
-
-
+    basket: Car[];
 }
