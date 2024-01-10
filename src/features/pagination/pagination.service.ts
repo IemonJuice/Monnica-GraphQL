@@ -8,7 +8,7 @@ export class PaginationService {
     constructor(@InjectRepository(Car) private carsRepository: Repository<Car>) {
     }
 
-    async getPaginatedCars(pageNumber: number, priceSortingCriteria?: string, ratingFilterCriteria?: number) {
+    async getPaginatedCars(pageNumber: number, priceSortingCriteria?: string, ratingFilterCriteria?: number, generalCarInfo?: string) {
         let query = this.carsRepository.createQueryBuilder('car').select()
 
         if (priceSortingCriteria === "ASC" || priceSortingCriteria === "DESC") {
@@ -18,6 +18,18 @@ export class PaginationService {
         if (ratingFilterCriteria) {
              await query.where("car.rating = :ratingFilterCriteria",
                  {ratingFilterCriteria: ratingFilterCriteria})
+        }
+        if(generalCarInfo){
+            await query.where("car.rating = :searchingField",
+                {searchingField: generalCarInfo})
+                .orWhere("car.model = :searchingField",
+                    {searchingField: generalCarInfo})
+                .orWhere("car.price = :searchingField",
+                    {searchingField: generalCarInfo})
+                .orWhere("car.HP = :searchingField",
+                    {searchingField: generalCarInfo})
+                .orWhere("car.releaseDate = :searchingField",
+                    {searchingField: generalCarInfo})
         }
 
         return await query

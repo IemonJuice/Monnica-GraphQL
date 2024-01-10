@@ -1,15 +1,16 @@
+import {Field, ObjectType} from "@nestjs/graphql";
 
-import {Field, InputType} from "@nestjs/graphql";
 
-@InputType()
-export class RegisterResponseInput{
+
+
+@ObjectType()
+export class UserToChangeObject{
+
     @Field({nullable:true})
     id:number;
 
-
     @Field()
     email:string;
-
 
     @Field()
     username:string;
@@ -18,9 +19,9 @@ export class RegisterResponseInput{
     @Field()
     age:number;
 
+
     @Field()
     gender:string;
 
-    @Field({nullable:true})
-    password?:string;
+
 }

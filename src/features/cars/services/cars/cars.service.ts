@@ -12,23 +12,10 @@ export class CarsService {
         return await this.carRepository.findOne({
             where: {
                 id
+            },
+            relations:{
+                users:true
             }
         })
-    }
-
-    async getCarWithSearchingField(searchingField: string) {
-        return this.carRepository.createQueryBuilder('car')
-            .select()
-            .where("car.rating = :searchingField",
-                {searchingField: searchingField})
-            .orWhere("car.model = :searchingField",
-                {searchingField: searchingField})
-            .orWhere("car.price = :searchingField",
-                {searchingField: searchingField})
-            .orWhere("car.HP = :searchingField",
-                {searchingField: searchingField})
-            .orWhere("car.releaseDate = :searchingField",
-                {searchingField: searchingField})
-            .getMany()
     }
 }

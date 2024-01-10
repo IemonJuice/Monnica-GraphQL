@@ -38,13 +38,8 @@ export class Car {
 
 
 
-    @ManyToMany(() => User,(user) => user.basket)
-    @JoinTable()
-    usersCheckoutId:User[]
+    @ManyToMany(() => User, user => user.basket, { cascade: ['insert', 'update'] })
+    users: User[];
 
-
-    @ManyToMany(() => User,(user) => user.liked)
-    @JoinTable()
-    usersLikedId:User[]
 
 }

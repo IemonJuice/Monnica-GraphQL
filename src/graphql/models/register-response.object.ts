@@ -5,6 +5,4 @@ import {User} from "./user.object";
 export class RegisterResponseObject{
     @Field(() => User)
     user:User;
-    @Field()
-    token:string;
 }
