@@ -1,15 +1,17 @@
-import {BadRequestException, Injectable, UnauthorizedException} from '@nestjs/common';
+import {BadRequestException, forwardRef, HttpCode, Inject, Injectable, UnauthorizedException} from '@nestjs/common';
 import {UsersService} from "../../../users/services/users/users.service";
 import * as bcrypt from 'bcrypt'
 import {SignUpDto} from "../../../../core/models/signUp.dto";
 import {SignInDto} from "../../../../core/models/signIn.dto";
-import {JwtService} from "@nestjs/jwt";
+import { JwtService } from '@nestjs/jwt';
 import {UserForChangeInfo} from "../../../../core/models/user.model";
+import {hash} from "bcrypt";
+
 
 @Injectable()
 export class AuthService {
     constructor(
-        private usersService: UsersService,
+        @Inject(forwardRef(() => UsersService)) private usersService: UsersService,
         private jwtService: JwtService) {
     }
 
@@ -59,5 +61,15 @@ export class AuthService {
 
     async changeUserInfo(user: UserForChangeInfo) {
         return await this.usersService.changeUserInfo(user)
+    }
+
+    async resetPassword(oldPassword: string, newPassword: string, userId: number) {
+         const user = await  this.usersService.getUserById(userId);
+         if(await bcrypt.compare(oldPassword,user.password)){
+             user.password = await hash(newPassword,10);
+             await this.usersService.changeUserInfo(user)
+             return 204;
+         }
+         throw new BadRequestException('wrong old password')
     }
 }
