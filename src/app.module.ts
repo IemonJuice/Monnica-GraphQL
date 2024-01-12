@@ -14,6 +14,7 @@ import {AuthModule} from './features/auth/auth.module';
 import {UsersResolver} from "./graphql/resolvers/users.resolver";
 import { CheckoutModule } from './features/checkout/checkout.module';
 import {CheckoutResolver} from "./graphql/resolvers/checkout.resolver";
+import { FileModule } from './features/file/file.module';
 
 
 
@@ -48,7 +49,9 @@ import {CheckoutResolver} from "./graphql/resolvers/checkout.resolver";
         TypeOrmModule.forRootAsync({
             useFactory:
                 process.env.NODE_ENV !== 'production' ? ormConfig : ormConfigProd
-        })
+        }),
+
+        FileModule
     ]
 })
 export class AppModule {}

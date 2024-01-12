@@ -26,6 +26,9 @@ export class User{
     @Field()
     password:string;
 
+    @Field({nullable:true})
+    avatarImageName:string;
+
     @Field(() => [CarObject])
     basket:CarObject[];
 

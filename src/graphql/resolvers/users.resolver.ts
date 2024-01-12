@@ -9,9 +9,7 @@ import {RegisterResponseObject} from "../models/register-response.object";
 import {RegisterResponseInput} from "../models/register-response.input";
 import {UserToChangeObject} from "../models/user-to-change.object";
 import {CarObject} from "../models/car.object";
-import {Code} from "typeorm";
 import {CheckoutService} from "../../features/checkout/services/checkout/checkout.service";
-
 
 @Resolver(() => User)
 export class UsersResolver {
