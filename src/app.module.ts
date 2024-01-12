@@ -12,21 +12,31 @@ import {CarsModule} from './features/cars/cars.module';
 import {UsersModule} from './features/users/users.module';
 import {AuthModule} from './features/auth/auth.module';
 import {UsersResolver} from "./graphql/resolvers/users.resolver";
+import { CheckoutModule } from './features/checkout/checkout.module';
+import {CheckoutResolver} from "./graphql/resolvers/checkout.resolver";
 
 
 
 @Module({
-    providers: [CarsResolver, UsersResolver],
+    providers: [
+        CarsResolver,
+        UsersResolver,
+        CheckoutResolver
+    ],
     imports: [
+        PaginationModule,
+
+        CarsModule,
+
+        UsersModule,
+
+        AuthModule,
+
+        CheckoutModule,
 
         ConfigModule.forRoot({
             isGlobal: true,
             load: [ormConfig],
-        }),
-
-        TypeOrmModule.forRootAsync({
-            useFactory:
-                process.env.NODE_ENV !== 'production' ? ormConfig : ormConfigProd
         }),
 
         GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -35,17 +45,10 @@ import {UsersResolver} from "./graphql/resolvers/users.resolver";
             playground: true,
         }),
 
-
-
-
-        PaginationModule,
-
-        CarsModule,
-
-        UsersModule,
-
-        AuthModule,
+        TypeOrmModule.forRootAsync({
+            useFactory:
+                process.env.NODE_ENV !== 'production' ? ormConfig : ormConfigProd
+        })
     ]
 })
-export class AppModule {
-}
+export class AppModule {}

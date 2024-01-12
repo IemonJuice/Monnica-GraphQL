@@ -8,7 +8,6 @@ import {JwtStrategyService} from './services/jwt-strategy/jwt-strategy.service';
 @Module({
     providers: [AuthService, JwtStrategyService,JwtService,],
     imports: [forwardRef(() => UsersModule),
-
         JwtModule.register({
             signOptions: {
                 expiresIn: '1h'

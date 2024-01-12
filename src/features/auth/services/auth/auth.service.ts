@@ -1,4 +1,4 @@
-import {BadRequestException, forwardRef, HttpCode, Inject, Injectable, UnauthorizedException} from '@nestjs/common';
+import {BadRequestException, forwardRef, Inject, Injectable, UnauthorizedException} from '@nestjs/common';
 import {UsersService} from "../../../users/services/users/users.service";
 import * as bcrypt from 'bcrypt'
 import {SignUpDto} from "../../../../core/models/signUp.dto";
@@ -11,13 +11,13 @@ import {hash} from "bcrypt";
 @Injectable()
 export class AuthService {
     constructor(
-        @Inject(forwardRef(() => UsersService)) private usersService: UsersService,
-        private jwtService: JwtService) {
-    }
+        @Inject(forwardRef(() => UsersService))
+        private usersService: UsersService,
+        private jwtService: JwtService) {}
 
 
     async login(loginCredentials: SignInDto) {
-        const existedUser = await this.usersService.getUserByUsername(loginCredentials.username);
+        const existedUser  = await this.usersService.getUserByUsername(loginCredentials.username);
         if (!existedUser) {
             throw new UnauthorizedException("User with this username doesn't exist")
         }
@@ -64,12 +64,18 @@ export class AuthService {
     }
 
     async resetPassword(oldPassword: string, newPassword: string, userId: number) {
-         const user = await  this.usersService.getUserById(userId);
-         if(await bcrypt.compare(oldPassword,user.password)){
-             user.password = await hash(newPassword,10);
-             await this.usersService.changeUserInfo(user)
+         const existedUser = await  this.usersService.getUserById(userId);
+
+         if(!existedUser) {
+             throw new UnauthorizedException('user not found')
+         }
+
+         if(await bcrypt.compare(oldPassword,existedUser.password)){
+             existedUser.password = await hash(newPassword,10);
+             await this.usersService.changeUserInfo(existedUser)
              return 204;
          }
+
          throw new BadRequestException('wrong old password')
     }
 }

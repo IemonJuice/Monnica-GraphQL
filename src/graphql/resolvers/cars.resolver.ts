@@ -1,8 +1,6 @@
 import {Args, Int, Query, Resolver} from "@nestjs/graphql";
-
 import {PaginationService} from "../../features/pagination/pagination.service";
 import {CarsService} from "../../features/cars/services/cars/cars.service";
-
 import {CarObject} from "../models/car.object";
 import {Car} from "../../core/models/car.model";
 
